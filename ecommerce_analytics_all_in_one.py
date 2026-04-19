@@ -21,7 +21,7 @@ import seaborn as sns
 # ---------------------------------------------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_DATA_PATH = PROJECT_ROOT / "data" / "sales_yearly.csv"
+DEFAULT_DATA_PATH = PROJECT_ROOT / "sales_yearly.csv"
 DEFAULT_OUTPUT_DIR = PROJECT_ROOT / "output"
 
 # Консоль Windows: корректный вывод UTF-8

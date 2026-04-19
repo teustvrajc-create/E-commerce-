@@ -27,7 +27,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Браузерде ашылады: файл жүктеңіз немесе «Демо деректер» қалқысымен `data/sales_yearly.csv` қолданыңыз.
+Браузерде ашылады: файл жүктеңіз немесе «Демо деректер» қалқысымен `sales_yearly.csv` қолданыңыз.
 
 **Міндетті бағандар CSV:** `order_id`, `order_date`, `customer_id`, `product_id`, `product_name`, `quantity`, `unit_price`. Қосымша: `category` (санат фильтрі үшін).
 

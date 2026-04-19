@@ -14,7 +14,7 @@ import analytics as an
 from database import init_db, log_upload, recent_uploads
 
 PROJECT_ROOT = Path(__file__).resolve().parent
-DEFAULT_CSV = PROJECT_ROOT / "data" / "sales_yearly.csv"
+DEFAULT_CSV = PROJECT_ROOT / "sales_yearly.csv"
 
 st.set_page_config(
     page_title="E-commerce талдау панелі",
@@ -53,7 +53,7 @@ def main() -> None:
             "Қосымша: category.",
         )
         use_demo = st.toggle(
-            "Демо деректер (data/sales_yearly.csv)",
+            "Демо деректер (sales_yearly.csv)",
             value=uploaded is None,
             help="Егер файл жүктемесеңіз, жергілікті демо қолданылады.",
         )
@@ -146,20 +146,20 @@ def main() -> None:
     )
 
     with tab1:
-        st.plotly_chart(an.plotly_monthly_revenue(monthly), use_container_width=True)
-        st.plotly_chart(an.plotly_forecast_chart(monthly, fc), use_container_width=True)
+        st.plotly_chart(an.plotly_monthly_revenue(monthly), width='stretch')
+        st.plotly_chart(an.plotly_forecast_chart(monthly, fc), width='stretch')
         st.caption(fc.get("note", ""))
 
     with tab2:
         topn = st.slider("Топ (N)", 5, 25, 10)
         top = an.top_products_by_quantity(df, top_n=topn)
-        st.dataframe(top, use_container_width=True, hide_index=True)
+        st.dataframe(top, width='stretch', hide_index=True)
 
     with tab3:
-        st.plotly_chart(an.plotly_rfm_scatter(rfm), use_container_width=True)
-        st.plotly_chart(an.plotly_rfm_treemap(rfm), use_container_width=True)
+        st.plotly_chart(an.plotly_rfm_scatter(rfm), width='stretch')
+        st.plotly_chart(an.plotly_rfm_treemap(rfm), width='stretch')
         with st.expander("RFM кестесі (толық)"):
-            st.dataframe(rfm, use_container_width=True, hide_index=True)
+            st.dataframe(rfm, width='stretch', hide_index=True)
 
     with tab4:
         lines = an.insights_text(monthly, rfm, fc)
@@ -194,7 +194,7 @@ def main() -> None:
         if not logs:
             st.caption("Әлі жүктеме жоқ (демо режим немесе файл жүктемедіңіз).")
         else:
-            st.dataframe(pd.DataFrame(logs), use_container_width=True, hide_index=True)
+            st.dataframe(pd.DataFrame(logs), width='stretch', hide_index=True)
 
 
 if __name__ == "__main__":
